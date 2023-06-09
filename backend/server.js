@@ -14,7 +14,7 @@ app.use(bodyParser.json());
 app.use('/api',userRoutes)
 
 //connect to db
-mongoose.connect("mongodb+srv://isaacmaitho:isaacmaitho14@job-search-app.97utfrh.mongodb.net/?retryWrites=true&w=majority",{
+mongoose.connect(process.env.MONGO_URI ,{
     useNewUrlParser: true,
     //useFindAndModify: false,
     useUnifiedTopology: true
