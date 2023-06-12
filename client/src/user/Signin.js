@@ -2,9 +2,10 @@ import React, {useState, useEffect} from "react"
 // eslint-disable-next-line
 import { Link} from "react-router-dom";
 // eslint-disable-next-line
-//import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 // eslint-disable-next-line
-//import { login } from '../actions/userActions'
+import { login } from '../actions/userActions'
+import { useHistory } from "react-router-dom";
 
 
 
@@ -14,31 +15,31 @@ const Signin = ({ location, history }) => {
     const [email, setEmail] = useState('isaacmaitho14@gmail.com')
     const [password, setPassword] = useState('1234')
 
-    //const dispatch = useDispatch()
+    const dispatch = useDispatch()
 
-   /* const userLogin = useSelector((state) => state.userLogin)
+    const userLogin = useSelector((state) => state.userLogin)
     const { loading, error, userInfo } = userLogin
 
     useEffect(() => {
         if (userInfo) {
             history.push('/')
         }
-    }, [history, userInfo])*/
+    }, [history, userInfo])
 
     const submitHandler = (e) => {
         e.preventDefault()
         console.log(email, password)
-        //dispatch(login(email, password))
+        dispatch(login(email, password))
     }
 
 
-    /*const showError = () => (
+    const showError = () => (
         <div className="alert alert-danger" style={{ display: error ? '' : 'none' }}>
             {error}
         </div>
-    );*/
+    );
 
-   /* const showLoading = () =>
+   const showLoading = () =>
         loading && (
             <div className="d-flex justify-content-center">
                 <div className="spinner-border" role="status">
@@ -46,7 +47,7 @@ const Signin = ({ location, history }) => {
                 </div>
             </div>
         );
-      */
+      
 
     const signInForm = () => (
 
@@ -70,6 +71,8 @@ const Signin = ({ location, history }) => {
 
     return (
         <>
+          {showError()}
+          {showLoading()}
 
             <div id="layoutAuthentication">
                 <div id="layoutAuthentication_content">
