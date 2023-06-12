@@ -5,8 +5,9 @@ import { useDispatch, useSelector } from 'react-redux'
 
 
 // history must match with path which is /signup e.g
-const isActive = (history, path) => {
-    if (history.location.pathname === path) {
+const isActive = (location,path) => {
+    
+    if (location.pathname === path) {
         return { color: "#ff9900" };
     } else {
         return { color: "#ffffff" };
@@ -14,12 +15,12 @@ const isActive = (history, path) => {
 };
 
 const Layout = ({
-    children,
-    history
+    children
 
 }) => {
     const userLogin = useSelector((state) => state.userLogin)
     const { userInfo } = userLogin
+    const location = useLocation()
 
     const sideBar = () => {
         return (
@@ -117,21 +118,21 @@ const Layout = ({
                     </li>
 
 
-                    <Link className="nav-item" style={isActive(history, `/profile/${userInfo._id}`)} to={`/profile/${userInfo._id}`}
+                    <Link className="nav-item" style={isActive(location, `/profile/${userInfo._id}`)} to={`/profile/${userInfo._id}`}
                     >
                         <a className="nav-link">
                             <i className="fas fa-id-badge"/>
                             <span> Profile</span></a>
                     </Link>
 
-                    <Link className="nav-item" style={isActive(history, '/list/users')} to="/list/users">
+                    <Link className="nav-item" style={isActive(location, '/list/users')} to="/list/users">
                         <a className="nav-link">
                             <i className="fas fa-address-book"/>
                             <span> List Users</span></a>
                     </Link>
 
 
-                    <Link className="nav-item" style={isActive(history, '/list/categories')} to="/list/categories">
+                    <Link className="nav-item" style={isActive(location, '/list/categories')} to="/list/categories">
                         <a className="nav-link">
                             <i className="fas fa-pen"/>
                             <span> Categories</span></a>
@@ -139,33 +140,33 @@ const Layout = ({
 
 
 
-                    <Link className="nav-item" style={isActive(history, '/list/orders')} to="/list/orders">
+                    <Link className="nav-item" style={isActive(location, '/list/orders')} to="/list/orders">
                         <a className="nav-link">
                             <i className="fas fa-plus"/>
                             <span> Orders</span></a>
                     </Link>
 
-                    <Link className="nav-item" style={isActive(history, '/list/products')} to="/list/products">
+                    <Link className="nav-item" style={isActive(location, '/list/products')} to="/list/products">
                         <a className="nav-link">
                             <i className="fas fa-plus"/>
                             <span> Products</span></a>
                     </Link>
 
-                    <Link className="nav-item" style={isActive(history, '/list/customers')} to="/list/customers">
+                    <Link className="nav-item" style={isActive(location, '/list/customers')} to="/list/customers">
                         <a className="nav-link">
                             <i className="fas fa-users"/>
                             <span> List Customers</span></a>
                     </Link>
 
 
-                    <Link className="nav-item" style={isActive(history, '/list/stores')} to="/list/stores">
+                    <Link className="nav-item" style={isActive(location, '/list/stores')} to="/list/stores">
                         <a className="nav-link">
                             <i className="fas fa-warehouse"/>
                             <span>  Store</span></a>
                     </Link>
 
 
-                    <Link className="nav-item" style={isActive(history, '/list-prod/stores')} to="/list-prod/stores">
+                    <Link className="nav-item" style={isActive(location, '/list-prod/stores')} to="/list-prod/stores">
                         <a className="nav-link">
                             <i className="fab fa-product-hunt"/>
                             <span>  Store Products</span></a>

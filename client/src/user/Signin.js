@@ -5,13 +5,14 @@ import { Link} from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux'
 // eslint-disable-next-line
 import { login } from '../actions/userActions'
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 
 
 
-const Signin = ({ location, history }) => {
+const Signin = () => {
 
+    const navigate = useNavigate();
     const [email, setEmail] = useState('isaacmaitho14@gmail.com')
     const [password, setPassword] = useState('1234')
 
@@ -22,9 +23,9 @@ const Signin = ({ location, history }) => {
 
     useEffect(() => {
         if (userInfo) {
-            history.push('/')
+            navigate('/')
         }
-    }, [history, userInfo])
+    }, [userInfo])
 
     const submitHandler = (e) => {
         e.preventDefault()
