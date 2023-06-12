@@ -1,15 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import SaccoRoute from "./Routes";
-import { BrowserRouter } from 'react-router-dom';
-//import { Provider } from 'react-redux'
-//import store from './store'
+import { BrowserRouter, Routes } from 'react-router-dom';
+import { Provider } from 'react-redux'
+import store from './Store'
 
 
 ReactDOM.render(
-    <BrowserRouter>
-        <SaccoRoute/>
-    </BrowserRouter>
+        <Provider store={store}>
+          <SaccoRoute/>
+        </Provider>
     ,
     document.getElementById('root')
 );

@@ -1,5 +1,5 @@
 import React, {Fragment} from "react";
-import {Link, withRouter} from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux'
 
 
@@ -18,6 +18,8 @@ const Layout = ({
     history
 
 }) => {
+    const userLogin = useSelector((state) => state.userLogin)
+    const { userInfo } = userLogin
 
     const sideBar = () => {
         return (
@@ -115,7 +117,8 @@ const Layout = ({
                     </li>
 
 
-                    <Link className="nav-item" style={isActive(history, `/profile/${userInfo._id}`)} to={`/profile/${userInfo._id}`}>
+                    <Link className="nav-item" style={isActive(history, `/profile/${userInfo._id}`)} to={`/profile/${userInfo._id}`}
+                    >
                         <a className="nav-link">
                             <i className="fas fa-id-badge"/>
                             <span> Profile</span></a>
@@ -444,4 +447,4 @@ const Layout = ({
 }
 
 
-export default withRouter(Layout);
+export default Layout;
