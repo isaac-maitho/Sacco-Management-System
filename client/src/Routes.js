@@ -3,6 +3,8 @@ import { BrowserRouter as Router, Routes, Route, BrowserRouter } from 'react-rou
 import Signin from './user/Signin';
 import Signup from "./user/Signup";
 import AdminDashboard from "./user/AdminDashboard";
+import ListMembers from "./admin/register/ListMembers";
+import RegisterMembers from "./admin/register/RegisterMembers";
 
 const page = () => {
     return (
@@ -20,6 +22,8 @@ const SaccoRoute = () => {
               <Route path="/signin" element={<Signin/>} />
               <Route path="/signup" element={<Signup/>} />
               <Route path="/" element={<AdminDashboard/>} />
+              <Route path="/add-member" element={<RegisterMembers/>} />
+              <Route path="/list-members" element={<ListMembers/>} />
             </Routes>
         </BrowserRouter>
     )
