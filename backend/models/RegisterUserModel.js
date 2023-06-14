@@ -2,18 +2,21 @@ const mongoose = require('mongoose')
 
 const Schema = mongoose.Schema
 
-const registerSchema = new Schema({
+const member = new Schema({
     firstName: {
         type: String,
+        trim: true,
         required: true
     },
     lastName: {
         type: String,
+        trime: true,
         required: true
     },
     email: {
         type: String,
-        required: true
+        required: true,
+        unique: true,
     },
     idNumber: {
         type: Number,
@@ -30,4 +33,4 @@ const registerSchema = new Schema({
 
 },{timestamps: true})
 
-module.exports = mongoose.model('Members', registerSchema)
+module.exports = mongoose.model('member', member)
