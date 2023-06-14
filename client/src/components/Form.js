@@ -18,7 +18,7 @@ function Form(props) {
     // Get the new value of this field
     const { name, value } = event.target;
 
-    console.log(`----> val`, value)
+    console.log(`----> val`, name)
 
     // Update state
     // Assign new value to the appropriate form field

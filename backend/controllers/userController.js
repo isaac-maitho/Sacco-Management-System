@@ -1,6 +1,6 @@
 const asyncHandler  = require( 'express-async-handler')
 const { generateToken }= require ('../utils/generateToken.js')
-const User = require ('../models/userModel')
+const Member = require ('../models/RegisterUserModel.js')
 
 
 
@@ -227,34 +227,38 @@ exports.addPatientToUserHistory = (req, res, next) => {
 
 exports.registerUsers = asyncHandler(async (req, res) => {
 
-    const { name, email, password, confirmPassword, role } = req.body
+    const { firstName, lastName, email, contact, profession, idNumber } = req.body
 
 
-    const userExists = await User.findOne({ email })
+    const memberExists = await Member.findOne({ email })
 
-    if (userExists) {
+    if (memberExists) {
         res.status(400)
-        throw new Error('User already exists')
+        throw new Error('Member already exists')
     }
 
-    if (password !== confirmPassword) {
+   /* if (password !== confirmPassword) {
         throw new Error('Password1 && Password2 do not match')
-    }
+    }*/
 
-    const user = await User.create({
-        name,
+    const user = await Member.create({
+        firstName,
+        lastName,
+        contact,
+        profession,
+        idNumber,
         email,
-        password,
-        role
     })
 
     if (user) {
         res.status(201).json({
             _id: user._id,
-            name: user.name,
+            firstName: user.firstName,
+            lastName: user.lastName,
             email: user.email,
-            role: user.role,
-            token: generateToken(user._id),
+            contact: user.contact,
+            profession: user.profession,
+            idNumber: user.idNumber
         })
     } else {
         res.status(400)

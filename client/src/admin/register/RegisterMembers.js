@@ -1,7 +1,11 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Layout from '../../core/Layout';
 import Form from '../../components/Form';
 import FormInput from '../../components/FormInput';
+import { USERS_REGISTER_RESET, USER_LIST_SUCCESS , USERS_REGISTER_FAIL } from '../../constants/userConstants'
+import { useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux'
+import { usersRegister } from '../../actions/userActions';
 
 
 function RegisterMembers() {
@@ -9,9 +13,35 @@ function RegisterMembers() {
   const initialValues = {
     firstName: '',
     lastName: '',
+    email: '', 
+    idNumber: '', 
+    profession: '', 
+    contact: ''
   };
 
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
+
+  const userLogin = useSelector((state) => state.userLogin)
+  const { userInfo } = userLogin
+
+
+  const usersCreate = useSelector((state) => state.usersCreate)
+  const { success, error, loading } = usersCreate
+ 
+
+
+  useEffect(() => {
+      if (userInfo && userInfo.role === 0) {
+          if (success){
+              dispatch({ type: USERS_REGISTER_RESET })
+              navigate('/list-members')
+          }
+      }
+  }, [dispatch, success, userInfo])
+
   const submit = (form) => {
+    const { firstName, lastName, email, idNumber ,profession, contact } = form
     setMessage(`Thanks for signing up, ${form.firstName} ${form.lastName}`);
   };
   
@@ -37,7 +67,7 @@ function RegisterMembers() {
           />
         <FormInput 
           label="Phone Number" 
-          name="phoneNumber" 
+          name="contact" 
           placeholder="Phone Number"
           />
         <FormInput 
@@ -49,11 +79,6 @@ function RegisterMembers() {
           label="Profession" 
           name="profession" 
           placeholder="Profession"
-          />
-        <FormInput 
-          label="Contributions /WK" 
-          name="conributions" 
-          placeholder="Contributions"
           />
        </Form>
        <p>{message}</p>

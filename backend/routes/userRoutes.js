@@ -36,7 +36,7 @@ router.delete('/users/delete/:user', protect, admin, deleteUser);
 
 router.post('/signup', registerUser)
 
-router.post('/register-users/:userId', protect, admin, registerUsers)
+router.post('/register-users', registerUsers)
 
 
 router.post('/signin', authUser)
