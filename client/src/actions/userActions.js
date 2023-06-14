@@ -92,7 +92,7 @@ export const logout = () => (dispatch) => {
 }
 
 
-export const register = (name, email, password) => async (dispatch) => {
+export const register = (firstName, lastName, email, idNumber ,profession, contact) => async (dispatch) => {
     try {
         dispatch({
             type: USER_REGISTER_REQUEST,
@@ -105,8 +105,8 @@ export const register = (name, email, password) => async (dispatch) => {
         }
 
         const { data } = await axios.post(
-            `${API}/signup`,
-            { name, email, password },
+            `${API}/register-users`,
+            { firstName, lastName, email, idNumber ,profession, contact },
             config
         )
 
@@ -115,12 +115,6 @@ export const register = (name, email, password) => async (dispatch) => {
             payload: data,
         })
 
-        dispatch({
-            type: USER_LOGIN_SUCCESS,
-            payload: data,
-        })
-
-        localStorage.setItem('userInfo', JSON.stringify(data))
     } catch (error) {
         dispatch({
             type: USER_REGISTER_FAIL,
