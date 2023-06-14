@@ -22,6 +22,7 @@ const Layout = ({
     const dispatch = useDispatch()
     const userLogin = useSelector((state) => state.userLogin)
     const { userInfo } = userLogin
+    const navigate = useNavigate()
     const location = useLocation()
 
     const logoutHandler = () => {
@@ -132,11 +133,15 @@ const Layout = ({
                             <span> Profile</span></a>
                     </Link>
 
-                    <Link className="nav-item" style={isActive(location, '/list/users')} to="/list/users">
-                        <a className="nav-link">
+                    
+                    <Link to='/list-members' 
+                       className='btn btn-ghost rounded-btn font-bold'  
+                       onClick={() => navigate('/list-members')}>
+                       <a className="nav-link">
                             <i className="fas fa-address-book"/>
-                            <span> List Users</span></a>
-                    </Link>
+                            <span> List Users</span>
+                    </a>
+                   </Link>
 
 
                     <Link className="nav-item" style={isActive(location, '/list/categories')} to="/list/categories">
