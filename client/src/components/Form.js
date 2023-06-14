@@ -13,30 +13,43 @@ function Form(props) {
 
 
 
-  const handleFormChange = useCallback(event => {
-    // Get the name of the field that caused this change event
-    // Get the new value of this field
+  // const handleFormChange = useCallback(event => {
+  //   // Get the name of the field that caused this change event
+  //   // Get the new value of this field
+  //   //event.preventDefault()
+  //   const { name, value } = event.target;
+
+  //   console.log(`----> val`, name)
+
+  //   // Update state
+  //   // Assign new value to the appropriate form field
+  //   setForm({
+  //     ...form,
+  //     [name]: value
+  //   });
+  // }, [form] )
+
+  // const providedValues = useMemo(() => ({
+  //   form,
+  //   handleFormChange
+  // }), 
+  // [form, handleFormChange])
+
+
+  const handleFormChange = (event) => {
     const { name, value } = event.target;
-
-    console.log(`----> val`, name)
-
-    // Update state
-    // Assign new value to the appropriate form field
     setForm({
       ...form,
       [name]: value
     });
-  }, [form] )
 
-  const providedValues = useMemo(() => ({
-    form,
-    handleFormChange
-  }), 
-  [form, handleFormChange])
-
+  }
+    
   return (
     <form className="Form">
-      <FormContext.Provider value={providedValues}>
+      <FormContext.Provider value={{
+        form, handleFormChange
+      }}>
         {children}
       </FormContext.Provider>
 

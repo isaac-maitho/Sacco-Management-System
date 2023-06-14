@@ -116,6 +116,7 @@ export const register = (firstName, lastName, email, idNumber ,profession, conta
         })
 
     } catch (error) {
+        console.log('---->', error)
         dispatch({
             type: USER_REGISTER_FAIL,
             payload: error.response && error.response.data.message
@@ -327,7 +328,7 @@ export const updateUsersProfile = (user) => async (dispatch, getState) => {
     }
 }
 
-export const usersRegister = (details) => async (dispatch, getState) => {
+export const usersRegister = ( firstName, lastName, email, idNumber ,profession, contact ) => async (dispatch, getState) => {
     try {
         dispatch({
             type: USERS_REGISTER_REQUEST,
@@ -344,8 +345,9 @@ export const usersRegister = (details) => async (dispatch, getState) => {
             },
         }
 
-        const { data } = await axios.post(`${API}/register-users/${userInfo._id}`, details, config )
-
+        //console.log(`----vvv`)
+        const { data } = await axios.post(`${API}/register-users`, { firstName, lastName, email, idNumber ,profession, contact }, config )
+        //console.log(`--->data`,data)
         dispatch({
             type: USERS_REGISTER_SUCCESS,
             payload: data,

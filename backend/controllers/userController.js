@@ -1,6 +1,7 @@
 const asyncHandler  = require( 'express-async-handler')
 const { generateToken }= require ('../utils/generateToken.js')
-const Member = require ('../models/RegisterUserModel.js')
+const member = require ('../models/RegisterUserModel.js')
+const User = require ('../models/userModel.js')
 
 
 
@@ -225,12 +226,13 @@ exports.addPatientToUserHistory = (req, res, next) => {
 };
 
 
+
 exports.registerUsers = asyncHandler(async (req, res) => {
 
     const { firstName, lastName, email, contact, profession, idNumber } = req.body
 
 
-    const memberExists = await Member.findOne({ email })
+    const memberExists = await member.findOne({ email })
 
     if (memberExists) {
         res.status(400)
@@ -241,7 +243,7 @@ exports.registerUsers = asyncHandler(async (req, res) => {
         throw new Error('Password1 && Password2 do not match')
     }*/
 
-    const user = await Member.create({
+    const user = await member.create({
         firstName,
         lastName,
         contact,
@@ -252,16 +254,30 @@ exports.registerUsers = asyncHandler(async (req, res) => {
 
     if (user) {
         res.status(201).json({
-            _id: user._id,
-            firstName: user.firstName,
-            lastName: user.lastName,
-            email: user.email,
-            contact: user.contact,
-            profession: user.profession,
-            idNumber: user.idNumber
+            ...user
         })
     } else {
         res.status(400)
         throw new Error('Invalid user data')
     }
 })
+
+// exports.registerUsers = asyncHandler(async (req, res) => {
+
+//     const members = new member(req.body)
+
+//     // const userExists = await User.findOne({ email })
+
+//     // if (userExists) {
+//     //     res.status(400)
+//     //     throw new Error('User already exists')
+//     // }
+
+//     await members.save().then(function(data) {
+//         return res.json({ data})
+//     }).catch(function(err) {
+//         return res.status(400).json({
+//             error: err
+//         })
+//     })
+// })

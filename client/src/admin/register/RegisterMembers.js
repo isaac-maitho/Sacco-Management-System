@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import Layout from '../../core/Layout';
 import Form from '../../components/Form';
 import FormInput from '../../components/FormInput';
-import { USERS_REGISTER_RESET, USER_LIST_SUCCESS , USERS_REGISTER_FAIL } from '../../constants/userConstants'
+import { USERS_REGISTER_RESET } from '../../constants/userConstants'
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux'
 import { usersRegister } from '../../actions/userActions';
@@ -11,12 +11,12 @@ import { usersRegister } from '../../actions/userActions';
 function RegisterMembers() {
   const [message, setMessage] = useState('');
   const initialValues = {
-    firstName: '',
-    lastName: '',
-    email: '', 
-    idNumber: '', 
-    profession: '', 
-    contact: ''
+    firstName: 'Dennis',
+    lastName: 'Mungai',
+    email: 'dmungai@gmail.com', 
+    idNumber: 987654, 
+    profession: 'Project Manager', 
+    contact: '0712345678'
   };
 
   const dispatch = useDispatch()
@@ -26,24 +26,16 @@ function RegisterMembers() {
   const { userInfo } = userLogin
 
 
-  const usersCreate = useSelector((state) => state.usersCreate)
-  const { success, error, loading } = usersCreate
- 
-
-
-  useEffect(() => {
-      if (userInfo && userInfo.role === 0) {
-          if (success){
-              dispatch({ type: USERS_REGISTER_RESET })
-              navigate('/list-members')
-          }
-      }
-  }, [dispatch, success, userInfo])
-
   const submit = (form) => {
     const { firstName, lastName, email, idNumber ,profession, contact } = form
-    setMessage(`Thanks for signing up, ${form.firstName} ${form.lastName}`);
-  };
+    dispatch(usersRegister(firstName, lastName, email, idNumber ,profession, contact))
+    dispatch({ type: USERS_REGISTER_RESET })
+    navigate('/list-members')
+    
+  }
+
+
+  
   
 
   return (
