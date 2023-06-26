@@ -135,7 +135,7 @@ const Layout = ({
 
                     
                     <Link to='/list-members' 
-                       className='btn btn-ghost rounded-btn font-bold'  
+                       className='btn btn-ghost rounded-btn font-bold nav-item'  
                        onClick={() => navigate('/list-members')}>
                        <a className="nav-link">
                             <i className="fas fa-address-book"/>
