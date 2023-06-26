@@ -26,11 +26,14 @@ function RegisterMembers() {
   const { userInfo } = userLogin
 
 
-  const submit = (form) => {
+  const submit = async(form) => {
     const { firstName, lastName, email, idNumber ,profession, contact } = form
-    dispatch(usersRegister(firstName, lastName, email, idNumber ,profession, contact))
-    dispatch({ type: USERS_REGISTER_RESET })
-    navigate('/list-members')
+   dispatch(usersRegister(firstName, lastName, email, idNumber ,profession, contact))
+      
+      dispatch({ type: USERS_REGISTER_RESET })
+      navigate('/list-members')
+
+   
     
   }
 

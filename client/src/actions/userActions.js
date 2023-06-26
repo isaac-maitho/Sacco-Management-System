@@ -352,7 +352,7 @@ export const usersRegister = ( firstName, lastName, email, idNumber ,profession,
             type: USERS_REGISTER_SUCCESS,
             payload: data,
         })
-
+        return data
     } catch (error) {
         dispatch({
             type: USERS_REGISTER_FAIL,
