@@ -5,6 +5,8 @@ import Signup from "./user/Signup";
 import AdminDashboard from "./user/AdminDashboard";
 import ListMembers from "./admin/register/ListMembers";
 import RegisterMembers from "./admin/register/RegisterMembers";
+import Loans from "./pages/Loans";
+import Savings from "./pages/Savings";
 
 const page = () => {
     return (
@@ -24,6 +26,8 @@ const SaccoRoute = () => {
               <Route path="/" element={<AdminDashboard/>} />
               <Route path="/add-member" element={<RegisterMembers/>} />
               <Route path="/list-members" element={<ListMembers/>} />
+              <Route path="/loans" element={<Loans/>} />
+              <Route path="/savings" element={<Savings/>} />
             </Routes>
         </BrowserRouter>
     )

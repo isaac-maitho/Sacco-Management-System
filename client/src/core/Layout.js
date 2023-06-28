@@ -152,17 +152,24 @@ const Layout = ({
 
 
 
-                    <Link className="nav-item" style={isActive(location, '/list/orders')} to="/list/orders">
-                        <a className="nav-link">
-                            <i className="fas fa-plus"/>
-                            <span> Orders</span></a>
-                    </Link>
+                    <Link to='/loans' 
+                       className='btn btn-ghost rounded-btn font-bold nav-item'  
+                       onClick={() => navigate('/loans')}>
+                       <a className="nav-link">
+                            <i class="fa-duotone fa-money-bill"></i>
+                            <span> Loans </span>
+                    </a>
+                   </Link>
 
-                    <Link className="nav-item" style={isActive(location, '/list/products')} to="/list/products">
-                        <a className="nav-link">
-                            <i className="fas fa-plus"/>
-                            <span> Products</span></a>
-                    </Link>
+                   <Link to='/savings' 
+                       className='btn btn-ghost rounded-btn font-bold nav-item'  
+                       onClick={() => navigate('/savings')}>
+                       <a className="nav-link">
+                            <i className="fas fa-money-bill"/>
+                            <span> Savings </span>
+                    </a>
+                   </Link>
+
 
                     <Link className="nav-item" style={isActive(location, '/list/customers')} to="/list/customers">
                         <a className="nav-link">
