@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux'
 import { register } from '../actions/userActions'
 
@@ -16,6 +16,7 @@ const Signup = ({ history }) => {
     const [message, setMessage] = useState(null)
 
     const dispatch = useDispatch()
+    const navigate = useNavigate()
 
     const userRegister = useSelector((state) => state.userRegister)
     const { loading, error, userInfo } = userRegister
@@ -23,7 +24,7 @@ const Signup = ({ history }) => {
 
     useEffect(() => {
         if (userInfo) {
-            history.push('/')
+            navigate('/')
         }
     }, [history, userInfo])
 
@@ -89,8 +90,10 @@ const Signup = ({ history }) => {
                 </div>
             </div>
             <div className="form-group mt-4 mb-0">
-                <button className="btn btn-primary btn-block">Create
-                Account</button></div>
+                <button className="btn btn-primary btn-block">
+                   Create Account
+                </button>
+            </div>
         </form>
 
     );
@@ -128,7 +131,7 @@ const Signup = ({ history }) => {
                     <footer className="py-4 bg-light mt-auto">
                         <div className="container-fluid">
                             <div className="d-flex align-items-center justify-content-between small">
-                                <div className="text-muted">Copyright &copy; Your Website 2020</div>
+                                <div className="text-muted">Copyright &copy; Your Website 2023</div>
                                 <div>
                                     <a href="#">Privacy Policy</a>
                                     &middot;

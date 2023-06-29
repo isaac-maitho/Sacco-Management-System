@@ -1,5 +1,6 @@
 import React, {Fragment} from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
+import { FaUsers, FaMoneyBill, FaPen, FaAddressBook, FaUser, FaBatteryFull } from 'react-icons/fa'
 import { logout } from '../actions/userActions'
 import { useDispatch, useSelector } from 'react-redux'
 
@@ -23,7 +24,6 @@ const Layout = ({
     const userLogin = useSelector((state) => state.userLogin)
     const { userInfo } = userLogin
     const navigate = useNavigate()
-    const location = useLocation()
 
     const logoutHandler = () => {
         dispatch(logout())
@@ -126,71 +126,55 @@ const Layout = ({
                     </li>
 
 
-                    <Link className="nav-item" style={isActive(location, `/profile/${userInfo._id}`)} to={`/profile/${userInfo._id}`}
-                    >
-                        <a className="nav-link">
-                            <i className="fas fa-id-badge"/>
-                            <span> Profile</span></a>
-                    </Link>
-
+                    <Link to={`/profile/${userInfo._id}`} 
+                       className='btn btn-ghost rounded-btn font-bold nav-item'  
+                       onClick={() => navigate(`/profile/${userInfo._id}`)}>
+                       <FaUser />
+                       Profile
+                   </Link>
                     
                     <Link to='/list-members' 
                        className='btn btn-ghost rounded-btn font-bold nav-item'  
                        onClick={() => navigate('/list-members')}>
-                       <a className="nav-link">
-                            <i className="fas fa-address-book"/>
-                            <span> List Users</span>
-                    </a>
+                       <FaAddressBook />
+                       List Members
                    </Link>
 
 
-                    <Link className="nav-item" style={isActive(location, '/list/categories')} to="/list/categories">
-                        <a className="nav-link">
-                            <i className="fas fa-pen"/>
-                            <span> Categories</span></a>
-                    </Link>
-
-
+                    <Link to='/categories' 
+                       className='btn btn-ghost rounded-btn font-bold nav-item'  
+                       onClick={() => navigate('/categories')}>
+                       <FaPen />
+                       Categories
+                   </Link>
 
                     <Link to='/loans' 
                        className='btn btn-ghost rounded-btn font-bold nav-item'  
                        onClick={() => navigate('/loans')}>
-                       <a className="nav-link">
-                            <i class="fa-duotone fa-money-bill"></i>
-                            <span> Loans </span>
-                    </a>
+                       <FaMoneyBill />
+                       Loans
                    </Link>
 
                    <Link to='/savings' 
                        className='btn btn-ghost rounded-btn font-bold nav-item'  
                        onClick={() => navigate('/savings')}>
-                       <a className="nav-link">
-                            <i className="fas fa-money-bill"/>
-                            <span> Savings </span>
-                    </a>
+                       <FaMoneyBill />
+                       Savings
                    </Link>
 
+                   <Link to='/customers' 
+                       className='btn btn-ghost rounded-btn font-bold nav-item'  
+                       onClick={() => navigate('/customers')}>
+                       <FaUsers />
+                       List Customers
+                   </Link>
 
-                    <Link className="nav-item" style={isActive(location, '/list/customers')} to="/list/customers">
-                        <a className="nav-link">
-                            <i className="fas fa-users"/>
-                            <span> List Customers</span></a>
-                    </Link>
-
-
-                    <Link className="nav-item" style={isActive(location, '/list/stores')} to="/list/stores">
-                        <a className="nav-link">
-                            <i className="fas fa-warehouse"/>
-                            <span>  Store</span></a>
-                    </Link>
-
-
-                    <Link className="nav-item" style={isActive(location, '/list-prod/stores')} to="/list-prod/stores">
-                        <a className="nav-link">
-                            <i className="fab fa-product-hunt"/>
-                            <span>  Store Products</span></a>
-                    </Link>
-
+                   <Link to='/about' 
+                       className='btn btn-ghost rounded-btn font-bold nav-item'  
+                       onClick={() => navigate('/about')}>
+                       <FaBatteryFull />
+                       About Page
+                   </Link>
 
 
                     <hr className="sidebar-divider d-none d-md-block"/>
