@@ -77,7 +77,7 @@ export const listMembers = () => async (dispatch, getState) => {
             },
         }
 
-        const { data } = await axios.get(`${API}/customer-list`, config)
+        const { data } = await axios.get(`${API}/member-list`, config)
 
         dispatch({
             type: LIST_MEMBER_SUCCESS,
