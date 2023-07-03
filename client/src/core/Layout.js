@@ -1,13 +1,13 @@
 import React, {Fragment} from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
-import { FaUsers, FaMoneyBill, FaPen, FaAddressBook, FaUser, FaBatteryFull } from 'react-icons/fa'
+import { FaUsers, FaMoneyBill, FaPen, FaAddressBook, FaUser, FaAccessibleIcon } from 'react-icons/fa'
 import { logout } from '../actions/userActions'
 import { useDispatch, useSelector } from 'react-redux'
 
 
 
 // history must match with path which is /signup e.g
-const isActive = (location,path) => {
+const isActive = (location, path) => {
     
     if (location.pathname === path) {
         return { color: "#ff9900" };
@@ -24,6 +24,7 @@ const Layout = ({
     const userLogin = useSelector((state) => state.userLogin)
     const { userInfo } = userLogin
     const navigate = useNavigate()
+    const location = useLocation()
 
     const logoutHandler = () => {
         dispatch(logout())
@@ -172,7 +173,7 @@ const Layout = ({
                    <Link to='/about' 
                        className='btn btn-ghost rounded-btn font-bold nav-item'  
                        onClick={() => navigate('/about')}>
-                       <FaBatteryFull />
+                       <FaAccessibleIcon />
                        About Page
                    </Link>
 

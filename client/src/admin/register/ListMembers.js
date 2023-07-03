@@ -14,7 +14,7 @@ const ListMembers = () => {
    const userList = useSelector((state) => state.userList)
     const { loading, error, users } = userList
 
-    const [data, setData] = useState(users)
+    const [member, setMember] = useState(users)
 
     console.log(users)
 
@@ -47,14 +47,14 @@ const ListMembers = () => {
     const searchUsers = (target) => {
         
         if (target === ' ') {
-           return setData(users)
+           return setMember(users)
         }
 
         let results = users && users.filter(user =>
             user.name.toString().toLowerCase().includes(target)
         )
 
-         setData(results)
+         setMember(results)
 
     }
  
@@ -126,9 +126,9 @@ const ListMembers = () => {
                     </tr>
                     <tbody>
                         {users.length !== 0 ? (
-                        <th scope="row">{users._id}</th>,
-                        <td>{users.firstName}</td>,
-                        <td>{users.email}</td>
+                        <th scope="row">{member._id}</th>,
+                        <td>{member.firstName}</td>,
+                        <td>{member.email}</td>
                         ) : (<td><b>No Users found</b></td>)}
                     </tbody>
                     </thead>
