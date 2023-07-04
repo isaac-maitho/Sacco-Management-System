@@ -10,7 +10,7 @@ const member = new Schema({
     },
     lastName: {
         type: String,
-        trime: true,
+        trim: true,
         required: true
     },
     email: {
