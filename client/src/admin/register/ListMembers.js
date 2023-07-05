@@ -28,7 +28,7 @@ const ListMembers = () => {
 
 
     useEffect(() => {
-        if (userInfo && userInfo.role === 0) {
+        if (userInfo && userInfo.role === 1) {
             dispatch(listMembers())
         } else {
             navigate('/list-members')
