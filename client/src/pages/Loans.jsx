@@ -12,7 +12,7 @@ function Loans() {
        <label >Last Name: </label>
        <input type="text" placeholder='L.Name' onChange={(e) =>(e.target.value)} />
 
-       <label>Date of Birth</label>
+       <label>Date of Birth: </label>
        <input type="text" placeholder='dd/mm/yy' onChange={(e) =>(e.target.value)} />
 
        <label>Gender: </label>
