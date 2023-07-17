@@ -7,6 +7,7 @@ import ListMembers from "./admin/register/ListMembers";
 import RegisterMembers from "./admin/register/RegisterMembers";
 import Loans from "./pages/Loans";
 import Savings from "./pages/Savings";
+import Modal from "./components/Modal";
 
 const page = () => {
     return (
@@ -28,6 +29,7 @@ const SaccoRoute = () => {
               <Route path="/list-members" element={<ListMembers/>} />
               <Route path="/loans" element={<Loans/>} />
               <Route path="/savings" element={<Savings/>} />
+              <Route path="/modal" element={<Modal/>} />
             </Routes>
         </BrowserRouter>
     )
