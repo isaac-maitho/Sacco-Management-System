@@ -1,6 +1,7 @@
 import React, {Fragment, useEffect, useState} from 'react'
 import Layout from '../../core/Layout';
 import { listMembers, deleteMember } from '../../actions/memberActions'
+import Modal from '../../components/Modal'
 import { useDispatch, useSelector } from 'react-redux'
 import {Link, useNavigate} from "react-router-dom";
 
@@ -15,6 +16,11 @@ const ListMembers = () => {
     const { loading, error, users } = userList
 
     const [member, setMember] = useState(users)
+    const [ modal, setModal ] = useState(false)
+
+    const openModal = () =>{
+        setModal(!Modal)
+    }
 
     console.log(users)
 
@@ -83,7 +89,13 @@ const ListMembers = () => {
 
     return (
         <Layout>
-            <h4><Link to="/add-member"><button>Add Member</button></Link></h4>
+            <h4>
+             <Link to=''>
+               <button onClick={openModal}>
+                 Add Member
+               </button>
+             </Link>
+            </h4>
 
             <h2 className="mb-4">List of Members</h2>
 
