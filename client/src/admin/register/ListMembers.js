@@ -1,14 +1,34 @@
 import React, {Fragment, useEffect, useState} from 'react'
 import Layout from '../../core/Layout';
 import { listMembers, deleteMember } from '../../actions/memberActions'
-import Modal from '../../components/Modal'
+import Modal from '../../components/modal/Modal'
+import Form from '../../components/Form';
+import FormInput from '../../components/FormInput';
 import { useDispatch, useSelector } from 'react-redux'
 import {Link, useNavigate} from "react-router-dom";
+import { usersRegister } from '../../actions/userActions';
 
 
 
 const ListMembers = () => {
 
+
+    const [message, setMessage] = useState('');
+    const initialValues = {
+      firstName: 'Dennis',
+      lastName: 'Mungai',
+      email: 'dmungai@gmail.com', 
+      idNumber: 987654, 
+      profession: 'Project Manager', 
+      contact: '0712345678'
+    };
+
+
+    const submit = async(form) => {
+        const { firstName, lastName, email, idNumber ,profession, contact } = form
+       dispatch(usersRegister(firstName, lastName, email, idNumber ,profession, contact))
+    }
+          
     const navigate = useNavigate()
     const dispatch = useDispatch()
 
@@ -19,7 +39,7 @@ const ListMembers = () => {
     const [ modal, setModal ] = useState(false)
 
     const openModal = () =>{
-        setModal(!Modal)
+        setModal(!modal)
     }
 
     console.log(users)
@@ -94,6 +114,44 @@ const ListMembers = () => {
                <button onClick={openModal}>
                  Add Member
                </button>
+               <Modal trigger ={modal} setTrigger ={setModal}>
+                 <h3>Add Member</h3>
+                 <>
+                <Form submit={submit} initialValues={initialValues}>
+                <FormInput 
+                    label="First Name" 
+                    name="firstName" 
+                    placeholder="First Name"
+                    />
+                <FormInput 
+                    label="Last Name" 
+                    name="lastName" 
+                    placeholder="Last Name"
+                    />
+                <FormInput 
+                    label="Email" 
+                    name="email" 
+                    placeholder="Email"
+                    />
+                <FormInput 
+                    label="Phone Number" 
+                    name="contact" 
+                    placeholder="Phone Number"
+                    />
+                <FormInput 
+                    label="ID" 
+                    name="idNumber" 
+                    placeholder="Id Number"
+                    />
+                <FormInput 
+                    label="Profession" 
+                    name="profession" 
+                    placeholder="Profession"
+                    />
+                </Form>
+                <p>{message}</p>
+            </>
+               </Modal>
              </Link>
             </h4>
 
