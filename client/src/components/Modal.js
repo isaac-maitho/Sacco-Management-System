@@ -19,12 +19,16 @@ function Modal() {
            Open
         </button>
 
-        <div className="modal">
+        {modal && (
+            <div className="modal">
             <div className="overlay"></div>
             <div className="modal-content">
                 <RegisterMembers />
             </div>
         </div>
+        )}
+
+       
 
         <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog">
