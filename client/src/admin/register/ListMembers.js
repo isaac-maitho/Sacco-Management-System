@@ -2,7 +2,7 @@ import React, {Fragment, useEffect, useState} from 'react'
 import Layout from '../../core/Layout';
 import { listMembers, deleteMember } from '../../actions/memberActions'
 import Modal from '../../components/modal/Modal'
-import Form from '../../components/Form';
+import Form from '../../components/form/Form';
 import FormInput from '../../components/FormInput';
 import { useDispatch, useSelector } from 'react-redux'
 import {Link, useNavigate} from "react-router-dom";

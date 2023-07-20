@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import Layout from '../../core/Layout';
-import Form from '../../components/Form';
+import Form from '../../components/form/Form';
 import FormInput from '../../components/FormInput';
 import { USERS_REGISTER_RESET } from '../../constants/userConstants'
 import { useNavigate } from 'react-router-dom';
