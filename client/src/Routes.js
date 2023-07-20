@@ -1,5 +1,6 @@
 import React from "react"
 import { BrowserRouter as Router, Routes, Route, BrowserRouter } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux'
 import Signin from './user/Signin';
 import Signup from "./user/Signup";
 import AdminDashboard from "./user/AdminDashboard";
@@ -7,6 +8,7 @@ import ListMembers from "./admin/register/ListMembers";
 import RegisterMembers from "./admin/register/RegisterMembers";
 import Loans from "./pages/Loans";
 import Savings from "./pages/Savings";
+import Profile from "./pages/Profile";
 
 const page = () => {
     return (
@@ -18,6 +20,10 @@ const page = () => {
 
 
 const SaccoRoute = () => {
+
+    const userLogin = useSelector((state) => state.userLogin)
+    const { userInfo } = userLogin
+  
     return(
         <BrowserRouter>
             <Routes>
@@ -28,6 +34,7 @@ const SaccoRoute = () => {
               <Route path="/list-members" element={<ListMembers/>} />
               <Route path="/loans" element={<Loans/>} />
               <Route path="/savings" element={<Savings/>} />
+              <Route path={`/profile/${userInfo._id}`} element={<Profile/>} />
             </Routes>
         </BrowserRouter>
     )
