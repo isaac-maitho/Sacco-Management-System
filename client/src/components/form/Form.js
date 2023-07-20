@@ -1,6 +1,6 @@
 import React, { useState, useMemo, useCallback } from 'react';
 import './Form.css';
-import Button from './Button';
+import Button from '../Button';
 
 export const FormContext = React.createContext({
   form: {}
