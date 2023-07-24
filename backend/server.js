@@ -3,6 +3,7 @@ const express = require('express')
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser');
 const userRoutes = require('./routes/userRoutes')
+const memberRoutes = require('./routes/memberRoutes')
 const cors = require('cors')
 
 const app = express()
@@ -14,6 +15,7 @@ app.use(bodyParser.json());
 //console.log(`---->`, userRoutes)
 //routes
 app.use('/api',userRoutes)
+app.use('/api',memberRoutes)
 
 //connect to db
 mongoose.connect(process.env.MONGO_URI ,{

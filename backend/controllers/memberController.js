@@ -76,12 +76,10 @@ exports.remove = asyncHandler(async (req, res) => {
 
 
 exports.list = asyncHandler(async (req, res) => {
-    await Member.find({}).exec((err, data) => {
-        if (err) {
-            return res.status(400).json({
-                error: err
-            });
-        }
+    try {
+        const data = await Member.find({});
         res.json(data);
-    });
-})
+    } catch (error) {
+        res.status(400).json({ error: error.message });
+    }
+});

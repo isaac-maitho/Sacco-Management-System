@@ -195,7 +195,7 @@ const ListMembers = () => {
 
                     </tr>
                     <tbody>
-                        {users.length !== 0 ? (
+                        {member.length !== 0 ? (
                         <th scope="row">{member._id}</th>,
                         <td>{member.firstName}</td>,
                         <td>{member.email}</td>
