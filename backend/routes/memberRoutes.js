@@ -16,7 +16,7 @@ router.put('/member-update/:id', protect, admin, update);
 
 router.delete('/member-remove/:id', protect, admin,  remove);
 
-router.get('/member-list', protect, admin, list);
+router.get('/member-list', list);
 
 
 router.post("/member-create", protect, admin, createMember)
