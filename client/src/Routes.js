@@ -22,7 +22,7 @@ const page = () => {
 const SaccoRoute = () => {
 
     const userLogin = useSelector((state) => state.userLogin)
-    const { userInfo } = userLogin
+   // const { userInfo } = userLogin
   
     return(
         <BrowserRouter>
@@ -34,7 +34,7 @@ const SaccoRoute = () => {
               <Route path="/list-members" element={<ListMembers/>} />
               <Route path="/loans" element={<Loans/>} />
               <Route path="/savings" element={<Savings/>} />
-              <Route path={`/profile/${userInfo._id}`} element={<Profile/>} />
+              <Route path="/profile/:userId" element={<Profile/>} />
             </Routes>
         </BrowserRouter>
     )
