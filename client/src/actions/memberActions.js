@@ -83,7 +83,7 @@ export const listMembers = () => async (dispatch, getState) => {
             type: LIST_MEMBER_SUCCESS,
             payload: data,
         })
-        console.log(data)
+       // console.log(data)
     } catch (error) {
         console.log(error)
         const message =

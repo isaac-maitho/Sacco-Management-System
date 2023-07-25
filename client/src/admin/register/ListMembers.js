@@ -35,7 +35,7 @@ const ListMembers = () => {
    const userList = useSelector((state) => state.userList)
     const { loading, error, users } = userList
 
-    const [member, setMember] = useState(users)
+    const [member, setMember] = useState([])
     const [ modal, setModal ] = useState(false)
 
     const openModal = () =>{
@@ -59,8 +59,13 @@ const ListMembers = () => {
         } else {
             navigate('/list-members')
         }
-    }, [dispatch, userInfo])
+    }, [dispatch, userInfo, navigate])
 
+
+    // Update the member state when the Redux store data changes
+        useEffect(() => {
+            setMember(users);
+        }, [users]);
 
 
     const deleteHandler = (id) => {
@@ -183,7 +188,7 @@ const ListMembers = () => {
                     
                     <div className="col-sm-8">
                 <table className="table">
-                    <thead>
+                <thead>
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">First</th>
@@ -195,13 +200,35 @@ const ListMembers = () => {
 
                     </tr>
                     <tbody>
-                        {member.length !== 0 ? (
-                        <th scope="row">{member._id}</th>,
-                        <td>{member.firstName}</td>,
-                        <td>{member.email}</td>
-                        ) : (<td><b>No Users found</b></td>)}
+                        {users.length !== 0 ? (
+                            users.map((user) => (
+                                <tr key={user._id}>
+                                    <th scope="row">{user._id}</th>
+                                    <td>{user.firstName}</td>
+                                    <td>{user.email}</td>
+                                    {/* Render other member properties as needed */}
+                                    <td>{/* Render member role here */}</td>
+                                    <td>{/* Render edit button here */}</td>
+                                    <td>
+                                        <button
+                                            onClick={() => deleteHandler(user._id)}
+                                            className="btn btn-danger"
+                                        >
+                                            Delete
+                                        </button>
+                                    </td>
+                                </tr>
+                            ))
+                        ) : (
+                            <tr>
+                                <td colSpan="6">
+                                    <b>No Users found</b>
+                                </td>
+                            </tr>
+                        )}
                     </tbody>
-                    </thead>
+
+                </thead>
                     
                 </table>
                     </div>
