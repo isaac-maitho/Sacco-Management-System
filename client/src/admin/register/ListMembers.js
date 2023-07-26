@@ -32,8 +32,8 @@ const ListMembers = () => {
     const navigate = useNavigate()
     const dispatch = useDispatch()
 
-   const userList = useSelector((state) => state.userList)
-    const { loading, error, users } = userList
+   const memberList = useSelector((state) => state.memberList)
+    const { loading, error, members } = memberList
 
     const [member, setMember] = useState([])
     const [ modal, setModal ] = useState(false)
@@ -42,11 +42,12 @@ const ListMembers = () => {
         setModal(!modal)
     }
 
-    console.log(users)
+    console.log(memberList)
 
 
     const userLogin = useSelector((state) => state.userLogin)
     const { userInfo } = userLogin
+   // console.log(userLogin)
 
     //const custDelete = useSelector((state) => state.custDelete)
     //const { success: successDelete } = custDelete
@@ -64,8 +65,8 @@ const ListMembers = () => {
 
     // Update the member state when the Redux store data changes
         useEffect(() => {
-            setMember(users);
-        }, [users]);
+            setMember(members);
+        }, [members]);
 
 
     const deleteHandler = (id) => {
@@ -78,11 +79,11 @@ const ListMembers = () => {
     const searchUsers = (target) => {
         
         if (target === ' ') {
-           return setMember(users)
+           return setMember(members)
         }
 
-        let results = users && users.filter(user =>
-            user.name.toString().toLowerCase().includes(target)
+        let results = members && members.filter(member =>
+            member.name.toString().toLowerCase().includes(target)
         )
 
          setMember(results)
@@ -200,18 +201,18 @@ const ListMembers = () => {
 
                     </tr>
                     <tbody>
-                        {users.length !== 0 ? (
-                            users.map((user) => (
-                                <tr key={user._id}>
-                                    <th scope="row">{user._id}</th>
-                                    <td>{user.firstName}</td>
-                                    <td>{user.email}</td>
+                        {members.length !== 0 ? (
+                            members.map((member) => (
+                                <tr key={member._id}>
+                                    <th scope="row">{member._id}</th>
+                                    <td>{member.firstName}</td>
+                                    <td>{member.email}</td>
                                     {/* Render other member properties as needed */}
                                     <td>{/* Render member role here */}</td>
                                     <td>{/* Render edit button here */}</td>
                                     <td>
                                         <button
-                                            onClick={() => deleteHandler(user._id)}
+                                            onClick={() => deleteHandler(member._id)}
                                             className="btn btn-danger"
                                         >
                                             Delete
