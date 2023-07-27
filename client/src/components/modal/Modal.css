@@ -5,6 +5,7 @@
     width: 100%;
     height:auto;
     background-color: rgba(0,0,0,0.2);
+    
 
     display: flex;
     justify-content: center;
@@ -15,6 +16,9 @@
     position: relative;
     padding: 32px;
     width: 100%;
+    padding: '20px';
+    border-radius: '4px';
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     max-width: 640px;
     background-color: aqua;
 }

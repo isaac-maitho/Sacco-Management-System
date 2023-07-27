@@ -3,10 +3,12 @@ import Layout from '../../core/Layout';
 import { listMembers, deleteMember } from '../../actions/memberActions'
 import Modal from '../../components/modal/Modal'
 import Form from '../../components/form/Form';
+import { Formik } from 'formik';
 import FormInput from '../../components/FormInput';
 import { useDispatch, useSelector } from 'react-redux'
 import {Link, useNavigate} from "react-router-dom";
 import { usersRegister } from '../../actions/userActions';
+import formatDistanceToNow from 'date-fns/formatDistanceToNow'
 
 
 
@@ -113,6 +115,15 @@ const ListMembers = () => {
             </div>
         );
 
+        const cardStyle = {
+            border: '1px solid #ccc',
+            borderRadius: '4px',
+            padding: '10px',
+            margin: '10px',
+            maxWidth: '400px',
+            listStyle: 'none',
+        }
+
     return (
         <Layout>
             <h4>
@@ -123,6 +134,7 @@ const ListMembers = () => {
                <Modal trigger ={modal} setTrigger ={setModal}>
                  <h3>Add Member</h3>
                  <>
+                <Formik>
                 <Form submit={submit} initialValues={initialValues}>
                 <FormInput 
                     label="First Name" 
@@ -155,6 +167,7 @@ const ListMembers = () => {
                     placeholder="Profession"
                     />
                 </Form>
+                </Formik>
                 <p>{message}</p>
             </>
                </Modal>
@@ -188,50 +201,32 @@ const ListMembers = () => {
                     
                     
                     <div className="col-sm-8">
-                <table className="table">
-                <thead>
-                    <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">First</th>
-                        <th scope="col">Email</th>
-                        <th scope="col">Role</th>
-                        <th scope="col">Edit</th>
-                        <th scope="col">Delete</th>
-
-
-                    </tr>
-                    <tbody>
-                        {members.length !== 0 ? (
-                            members.map((member) => (
-                                <tr key={member._id}>
-                                    <th scope="row">{member._id}</th>
-                                    <td>{member.firstName}</td>
-                                    <td>{member.email}</td>
-                                    {/* Render other member properties as needed */}
-                                    <td>{/* Render member role here */}</td>
-                                    <td>{/* Render edit button here */}</td>
-                                    <td>
-                                        <button
-                                            onClick={() => deleteHandler(member._id)}
-                                            className="btn btn-danger"
-                                        >
-                                            Delete
-                                        </button>
-                                    </td>
-                                </tr>
-                            ))
-                        ) : (
-                            <tr>
-                                <td colSpan="6">
-                                    <b>No Users found</b>
-                                </td>
-                            </tr>
-                        )}
-                    </tbody>
-
-                </thead>
-                    
-                </table>
+                    <div className="member-details">
+               <ul>
+                    {members.length !== 0 ? (
+                        members.map((member) => (
+                        <li key={member._id} style={cardStyle}>
+                            <p>ID: {member.idNumber}</p>
+                            <p>Name: {member.firstName}</p>
+                            <p>Email: {member.email}</p>
+                            <p>Role: {member.role}</p>
+                            <p>Created: {formatDistanceToNow(new Date(member.createdAt), { addSuffix: true })}</p>
+                            {/* Render other member properties as needed */}
+                           
+                            <button onClick={() => deleteHandler(member._id)} className="btn btn-danger">
+                            Delete
+                            </button>
+                        </li>
+                        ))
+                    ) : (
+                        <div>
+                        <p>
+                            <b>No Members found</b>
+                        </p>
+                        </div>
+                    )}
+                    </ul>
+                    </div>
                     </div>
                 </div>
             )}
