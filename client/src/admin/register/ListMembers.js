@@ -17,12 +17,12 @@ const ListMembers = () => {
 
     const [message, setMessage] = useState('');
     const initialValues = {
-      firstName: 'Dennis',
-      lastName: 'Mungai',
-      email: 'dmungai@gmail.com', 
-      idNumber: 987654, 
-      profession: 'Project Manager', 
-      contact: '0712345678'
+      firstName: '',
+      lastName: '',
+      email: '', 
+      idNumber: '', 
+      profession: '', 
+      contact: ''
     };
 
 
