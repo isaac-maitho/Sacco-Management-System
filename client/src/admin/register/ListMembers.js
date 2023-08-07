@@ -115,13 +115,13 @@ const ListMembers = () => {
             </div>
         );
 
-        const cardStyle = {
+        const listStyle = {
             border: '1px solid #ccc',
             borderRadius: '4px',
             padding: '10px',
             margin: '10px',
             maxWidth: '400px',
-            listStyle: 'none',
+            listStyle: 'ul',
         }
 
     return (
@@ -205,7 +205,7 @@ const ListMembers = () => {
                <ul>
                     {members.length !== 0 ? (
                         members.map((member) => (
-                        <li key={member._id} style={cardStyle}>
+                        <li key={member._id} style={listStyle}>
                             <p>ID: {member.idNumber}</p>
                             <p>Name: {member.firstName}</p>
                             <p>Email: {member.email}</p>
