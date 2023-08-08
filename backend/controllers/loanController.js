@@ -41,7 +41,7 @@ exports.getLoanDetail = asyncHandler(async (req, res) => {
 
 
 exports.list = asyncHandler(async (req, res) => {
-    await Order.find({}).populate("member").exec((err, data) => {
+    await Loan.find({}).populate("member").exec((err, data) => {
         if (err) {
             return res.status(400).json({
                 error: err
