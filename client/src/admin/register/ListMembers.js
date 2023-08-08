@@ -116,7 +116,6 @@ const ListMembers = () => {
         );
 
         const listStyle = {
-            border: '1px solid #ccc',
             borderRadius: '4px',
             padding: '10px',
             margin: '10px',
