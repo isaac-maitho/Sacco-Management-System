@@ -1,5 +1,6 @@
 import React from 'react'
 import Layout from '../core/Layout'
+import { createLoan } from '../actions/loanActions'
 
 function Loans() {
   return (

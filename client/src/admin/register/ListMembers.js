@@ -121,6 +121,8 @@ const ListMembers = () => {
             margin: '10px',
             maxWidth: '400px',
             listStyle: 'ul',
+            display: 'flex',
+            wordSpacing: '30px'
         }
 
     return (
