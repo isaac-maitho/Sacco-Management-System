@@ -40,7 +40,7 @@ export const createLoan = (str) => async (dispatch, getState) => {
         }
 
         const { data } = await axios.post(`${API}/loan-create`, str, config)
-        console.log(`oder`, str)
+        console.log(`loan`, str)
 
         dispatch({
             type: CREATE_LOAN_SUCCESS,
