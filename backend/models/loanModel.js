@@ -13,11 +13,11 @@ const loanSchema = new mongoose.Schema(
                 name: { type: String, required: true },
                 description: { type: String, required: true },
                 amount: { type: Number, required: true },
-                category: {
+               /* category: {
                     type: mongoose.Schema.Types.ObjectId,
                     required: true,
                     ref: 'Category',
-                },
+                },*/
             },
         ],
     },

@@ -21,6 +21,14 @@ import {
     memberDetailsReducer,
 } from './reducers/memberReducers'
 
+import {
+    loanCreateReducer,
+    loanListReducer,
+    loanDeleteReducer,
+    loanDetailsReducer
+} from './reducers/loanReducers'
+
+
 
 const reducer = combineReducers({
     userLogin: userLoginReducer,
@@ -36,7 +44,11 @@ const reducer = combineReducers({
     memberCreate: memberCreateReducer,
     memberUpdate: memberUpdateReducer,
     memberDelete: memberDeleteReducer,
-    memberDetails: memberDetailsReducer
+    memberDetails: memberDetailsReducer,
+    loanCreate: loanCreateReducer,
+    loanList: loanListReducer,
+    loanDelete: loanDeleteReducer,
+    loanDetails: loanDetailsReducer,
 
 })
 

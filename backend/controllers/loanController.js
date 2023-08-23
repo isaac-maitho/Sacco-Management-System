@@ -4,7 +4,7 @@ const asyncHandler  = require( 'express-async-handler')
 
 
 
-exports.addLoan = asyncHandler(async (req, res) => {
+exports.createLoan = asyncHandler(async (req, res) => {
     const {
         loan,
         member,

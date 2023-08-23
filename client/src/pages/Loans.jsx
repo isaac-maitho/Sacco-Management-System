@@ -1,8 +1,15 @@
 import React from 'react'
 import Layout from '../core/Layout'
+import { useDispatch, useSelector } from 'react-redux'
 import { createLoan } from '../actions/loanActions'
 
 function Loans() {
+
+  const dispatch = useDispatch()
+
+  const submit = async () =>{
+    dispatch(createLoan)
+  }
   return (
     <Layout>
     <div>
@@ -40,6 +47,10 @@ function Loans() {
         <option value="2">11,000-20,000</option>
         <option value="3">21,000-35,000</option>
       </select>
+    </div>
+
+    <div className="btn btn-primary" onSubmit={submit}>
+      Submit
     </div>
   </Layout>
   )

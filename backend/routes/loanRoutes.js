@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 
-const {  addLoan, list, getLoanDetail } = require('../controllers/loanController');
+const {  createLoan, list, getLoanDetail } = require('../controllers/loanController');
 
 
 const { protect, admin } = require('../middleware/authMiddleware.js')
@@ -19,7 +19,7 @@ const { protect, admin } = require('../middleware/authMiddleware.js')
 router.get('/loan-list', protect, admin, list);
 
 
-router.post("/loan-create", protect, admin, addLoan)
+router.post("/loan-create", protect, admin, createLoan)
 
 
 
